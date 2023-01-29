@@ -32,3 +32,10 @@ let list: (list<'i>, 'i => value) => value = (l, encodeI) =>
 let object: array<(string, value)> => value = arr => arr->Js.Dict.fromArray->J.object_
 
 let dict: Js.Dict.t<value> => value = obj => obj->J.object_
+
+let tuple2: (('a, 'b), 'i => value, 'j => value) => value = ((a, b), encodeI, encodeJ) => {
+  let a' = encodeI(a)
+  let b' = encodeJ(b)
+
+  [a', b']->J.array
+}

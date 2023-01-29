@@ -144,3 +144,5 @@ Turn a `Js.Dict.t` into a JSON object.
   // {\"name\":\"Maria\",\"age\":26}
 ]}
 ")
+
+let tuple2: (('i, 'j), 'i => value, 'j => value) => value

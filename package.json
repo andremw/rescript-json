@@ -7,6 +7,9 @@
   "repository": "https://github.com/jaredramirez/rescript-json.git",
   "author": "Jared Ramirez <jaredramirez@hey.com>",
   "license": "MIT",
+  "scripts": {
+    "dev:rescript": "rescript build -w"
+  },
   "devDependencies": {
     "@dusty-phillips/rescript-zora": "^3.0.0",
     "bsdoc": "^6.0.4-alpha",
