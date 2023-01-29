@@ -291,5 +291,37 @@ zora("encode tests", t => {
     done()
   })
 
+  t->test("should encode a tuple of (string, float)", t => {
+    let tuple = ("a_string", 14.5)
+    t->equal(
+      encode(tuple2(tuple, string, float), ~indentLevel=0),
+      `["a_string",14.5]`,
+      "Should equal",
+    )
+    done()
+  })
+
+  t->test("should encode a tuple of (array, object)", t => {
+    let arr = [1, 2, 3]
+    let obj = {
+      "key1": 1,
+      "key2": "ok",
+    }
+
+    let arr_encode = (arr: array<int>) => array(arr, int)
+    let obj_encode = (obj: {"key1": int, "key2": string}) =>
+      object([("key1", obj["key1"]->int), ("key2", obj["key2"]->string)])
+
+    let tuple = (arr, obj)
+
+    t->equal(
+      encode(tuple2(tuple, arr_encode, obj_encode), ~indentLevel=0),
+      `[[1,2,3],{"key1":1,"key2":"ok"}]`,
+      "Should equal",
+    )
+
+    done()
+  })
+
   done()
 })

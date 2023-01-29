@@ -146,3 +146,10 @@ Turn a `Js.Dict.t` into a JSON object.
 ")
 
 let tuple2: (('i, 'j), 'i => value, 'j => value) => value
+@@ocaml.text("
+Turn a tuple into a JSON array.
+
+{[
+  tuple2((\"a_string\", 14.5), string, float)->encode(~indentLevel=0)         == \"[\"a_string\", 14.5]\"
+]}
+")
